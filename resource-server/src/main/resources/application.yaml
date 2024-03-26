@@ -1,0 +1,17 @@
+
+server.port : 9090
+
+spring:
+  application.name : poc-oidc-resource-server
+
+
+
+springdoc:
+  swagger-ui.path: /swagger-ui.html
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security : DEBUG

@@ -1,0 +1,39 @@
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          poc-aad-pa:
+            provider: azure
+            client-id: ${OIDC_CLIENT_AZURE_CLIENT_ID}
+            client-secret: ${OIDC_CLIENT_AZURE_CLIENT_SECRET}
+            scope:
+              - openid
+              - email
+              - profile
+              - api://${WA_AZURE_CLIENT_ID}/books.read
+              - api://${WA_AZURE_CLIENT_ID}/books.write
+        provider:
+          azure:
+            issuer-uri: https://login.microsoftonline.com/${OIDC_CLIENT_AZURE_TENANT_ID}/v2.0
+
+app:
+  poc.aad.wa.baseUrl : ${WA_BASE_URL}
+
+
+# Group mapping
+  jwt:
+    authorization:
+      group-to-authorities:
+        "ceef656a-fca9-49b6-821b-f7543b7065cb": BAELDUNG_RW
+        "eaaecb69-ccbc-4143-b111-7dd1ce1d99f1": BAELDUNG_RO,BAELDUNG_ADMIN
+
+
+logging:
+  level:
+    org.springframework.boot: error
+    org.springframework.security: debug
+    org.springframework.security.web: debug
+    org.springframework.security.oauth2 : debug
+    org.apache.catalina: error

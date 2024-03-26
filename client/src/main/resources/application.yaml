@@ -1,0 +1,18 @@
+
+
+spring:
+  application.name : "poc-oidc-client"
+
+
+app:
+  poc.aad.wa.baseUrl : ${WA_BASE_URL}
+
+
+
+logging:
+  level:
+    org.springframework.boot: error
+    org.springframework.security: debug
+    org.springframework.security.web: debug
+    org.springframework.security.oauth2 : debug
+    org.apache.catalina: error
